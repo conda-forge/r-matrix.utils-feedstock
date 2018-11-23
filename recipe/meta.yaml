@@ -15,8 +15,8 @@ source:
   sha256: 2f0d02b5085b44b5fa38bec2af55d273e0c50761d9ddeb246ea0e26d7c114229
 
 build:
-  number: 0
-  skip: true  # [win32]
+  noarch: generic
+  number: 1000
 
   rpaths:
     - lib/R/lib/
@@ -44,8 +44,7 @@ about:
   summary: Implements data manipulation methods such as cast, aggregate, and merge/join for Matrix
     and matrix-like objects.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
