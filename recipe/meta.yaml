@@ -1,5 +1,4 @@
-{% set version = '0.9.6' %}
-
+{% set version = '0.9.7' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,26 +7,26 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: Matrix.utils_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/Matrix.utils_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/Matrix.utils/Matrix.utils_{{ version }}.tar.gz
-  sha256: 2f0d02b5085b44b5fa38bec2af55d273e0c50761d9ddeb246ea0e26d7c114229
+    - {{ cran_mirror }}/src/contrib/Matrix.utils_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/Matrix.utils/Matrix.utils_{{ version }}.tar.gz
+  sha256: 6a9fbc9f7117e1a3978948739cbdd57860996498d96b2fe56fc1bf2115c9c4f4
 
 build:
+  merge_build_host: True  # [win]
+  number: 0
   noarch: generic
-  number: 1000
-
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-matrix
     - r-grr
-
   run:
     - r-base
     - r-matrix
@@ -35,11 +34,11 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('Matrix.utils')"  # [not win]
+    - $R -e "library('Matrix.utils')"           # [not win]
     - "\"%R%\" -e \"library('Matrix.utils')\""  # [win]
 
 about:
-  home: https
+  home: https://github.com/cvarrichio/Matrix.utils
   license: GPL-3
   summary: Implements data manipulation methods such as cast, aggregate, and merge/join for Matrix
     and matrix-like objects.
@@ -48,8 +47,23 @@ about:
 
 extra:
   recipe-maintainers:
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
+    - conda-forge/r
     - roryk
+
+# Package: Matrix.utils
+# Title: Data.frame-Like Operations on Sparse and Dense Matrix Objects
+# Version: 0.9.7
+# Author: Craig Varrichio <canthony427@gmail.com>
+# Maintainer: Craig Varrichio <canthony427@gmail.com>
+# Description: Implements data manipulation methods such as cast, aggregate, and merge/join for Matrix and matrix-like objects.
+# Depends: R (>= 3.0.0), Matrix
+# Imports: grr, methods, stats
+# Suggests: testthat
+# License: GPL-3
+# URL: https://github.com/cvarrichio/Matrix.utils
+# LazyData: true
+# RoxygenNote: 6.0.1
+# NeedsCompilation: no
+# Packaged: 2018-04-19 15:25:08 UTC; Craig_Varrichio
+# Repository: CRAN
+# Date/Publication: 2018-04-19 22:04:49 UTC
