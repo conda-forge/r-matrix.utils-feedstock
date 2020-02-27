@@ -1,4 +1,4 @@
-{% set version = '0.9.7' %}
+{% set version = "0.9.8" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/Matrix.utils_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Matrix.utils/Matrix.utils_{{ version }}.tar.gz
-  sha256: 6a9fbc9f7117e1a3978948739cbdd57860996498d96b2fe56fc1bf2115c9c4f4
+  sha256: ebc59d3ef751775515586ff1f2396e429a1e9d91a10099d804134fcf74c0ae28
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -40,10 +40,9 @@ test:
 about:
   home: https://github.com/cvarrichio/Matrix.utils
   license: GPL-3
-  summary: Implements data manipulation methods such as cast, aggregate, and merge/join for Matrix
-    and matrix-like objects.
+  summary: Implements data manipulation methods such as cast, aggregate, and merge/join for Matrix and matrix-like objects.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
