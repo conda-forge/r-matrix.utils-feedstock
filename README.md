@@ -1,11 +1,11 @@
-About r-matrix.utils
-====================
+About r-matrix.utils-feedstock
+==============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-matrix.utils-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/cvarrichio/Matrix.utils
 
 Package license: GPL-3
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-matrix.utils-feedstock/blob/main/LICENSE.txt)
 
 Summary: Implements data manipulation methods such as cast, aggregate, and merge/join for Matrix and matrix-like objects.
 
